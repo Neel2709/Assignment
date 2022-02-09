@@ -1,0 +1,143 @@
+-- Start the MongoDB server 
+ Mongo --host localhost --port 27017
+ 
+--Stop the MongoDB Server 
+ exit 
+ 
+-- Fetch databases 
+ show databases
+
+--Fetch All Databases 
+ show dbs
+
+-- create Database 
+ use training
+
+-- Create Collection in the Database User 
+ db.createCollection("User")
+
+
+--Fetching the collection in database 
+ show collections
+
+-- Deleting the collection 
+ db.User.drop()
+ 
+-- insert single document in collection 
+ db.user.insertOne({
+ name : "Neel",
+ age : 23,
+ mobile : 9157189673,
+ Email : "neel.rana@aimdek.com",
+ Address : "Ahmedabad"})
+
+--insert multiple document in single collection 
+ db.user.insertMany([
+ {
+ name : "Preksha",
+ age : 22,
+ mobile : 9157189645,
+ Email : "preksha.sheth@aimdek.com",
+ Address : "Ahmedabad"
+ },
+ {
+ name : "Rutwik",
+ age : 23,
+ mobile : 9957189645,
+ Email : "rutwik.patel@aimdek.com",
+ Address : "Ahmedabad"
+ },
+ {
+ name : "Rushali",
+ age : 22,
+ mobile : 9957189673,
+ Email : "rushali.zaveri@aimdek.com",
+ Address : "Ahmedabad"
+ }
+ ])
+
+--Read operations
+
+ db.user.find().pretty()
+
+--find element by key
+
+ db.user.find({name : 'Preksha' })
+
+ db.user.find({age:22})
+ 
+--Using sort() to sort the data 
+--for ascending sorting provide positive 1 
+
+ db.user.find().sort({age : 1}).pretty()
+ 
+--for descending sorting provide -1 in sort function 
+
+ db.user.find().sort({age : -1}).pretty()
+
+--count the number of record in collection
+
+ db.user.find().count()
+ 
+--count the no. of records which age have 22 
+
+ db.user.find({age : 22}).count()
+ 
+--Apply Limit 
+
+ db.user.find().limit(2)
+ 
+--Apply sort() with the limit()
+
+ db.user.find().sort({age : 1}).limit(2)
+ 
+--update records (replace the entire record ) 
+
+ db.user.update({name : 'Neel'},
+ {
+	name : 'Neel Rana',
+	age : 23 ,
+	mobile : 9157189673,
+	Email : 'neelrana6@gmail.com'
+ },
+ {
+	upsert : true
+ }
+ )
+ 
+--update records (without replacing the entire record ) 
+
+ db.user.update({name : 'Neel'},
+  {
+ 	$set: { 
+		Email : 'neelrana6@gmail.com'
+		}
+  }
+ )
+ 
+--update recors using increment operator ($inc) 
+
+ db.user.update({name : 'Neel'},{ $inc: { age : 2 }})
+ 
+--rename the field name 
+
+ db.user.update({name : 'Neel'},{ $rename: { age : 'Age' } } )
+ 
+--Delete the record from collection 
+ db.user.remove({name : 'Rushali'})
+ 
+--create index 
+
+db.user.createIndex({name : 'text'})
+
+--Search record using index 
+db.user.find({
+	$text :{
+		$search : "\"R\""
+	}
+})
+
+--using $gt /  $lt / $lte / $gte operator
+ db.user.find({age : {$gt : 20}}).pretty()
+ 
+

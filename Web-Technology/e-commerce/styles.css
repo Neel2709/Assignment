@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+  }
+  
+body,html {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.singleProduct{
+  border: 2px solid black; 
+  padding: 10px; margin: 2px;
+  margin-bottom: 10px;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+     /* Should be removed. Only for demonstration */
+}
+  
+.left {
+    width:45%;
+    height: fit-content;
+}
+
+.right {
+    width: 53%;
+    height:fit-content;
+}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .RightDiv{
+    height: fit-content;
+    width: 70%;
+  }
+
+  .LeftDiv{
+    height: fit-content;
+    width: 30%;
+  }
+
+  div.Division {
+    margin-left: 1px;
+    margin-top: 5px;
+    margin-right: 1px;
+    border: 2px solid black;
+    padding: 10px;
+    justify-content: flex-start!important;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+}
+
+.btns {
+  margin-top: 13px;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  width: fit-content;
+  margin-left: 30%;
+}
+
+
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  
+    .left {
+      width: fit-content;
+      height:fit-content;
+    }
+  
+    .right {
+        width: fit-content;
+    }
+  
+  }
