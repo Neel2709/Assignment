@@ -3,7 +3,6 @@ import Navbar from './Navbar'
 import { auth , db } from '../config/Config'
 import CartProduct from './CartProduct'
 
-
 const ProdDesc = () => {
 
   //Getting current user 
@@ -11,9 +10,6 @@ const ProdDesc = () => {
   function GetCurrentUser(){
 
     const [user,setUser] = useState(null);
-
-    // var users = auth.currentUser;
-    // updateProfile(users,{displayName:"Neel"});
 
     useEffect(()=>{
       auth.onAuthStateChanged(user => {
@@ -35,9 +31,6 @@ const ProdDesc = () => {
   //Getting cart products
 
   const [cartProducts,setCartProducts] = useState([]);
-
-  const leng = cartProducts.length ;
-  // console.log(leng);
 
   useEffect(()=>{
     auth.onAuthStateChanged(user => { 
@@ -70,7 +63,6 @@ const ProdDesc = () => {
 
   const TotalQty = qty.reduce(reduceqty,0);
 
-  // console.log(TotalQty);
 
   //Computing total price 
 
@@ -91,7 +83,6 @@ const ProdDesc = () => {
   let Product;
 
   const cartProductIncrease = (cartProducts) => {
-     //console.log(cartProducts);
     Product=cartProducts;
     Product.Qty= Product.Qty+1;
     Product.TotalProductPrice = Product.Qty * Product.ProductPrice;
@@ -99,7 +90,6 @@ const ProdDesc = () => {
     auth.onAuthStateChanged(user => {
       if(user){
         db.collection('cart '+user.uid).doc(cartProducts.ID).update(Product).then(()=>{
-          console.log("Increment done ...");
         })
       }
       else{
@@ -117,7 +107,6 @@ const ProdDesc = () => {
     auth.onAuthStateChanged(user => {
       if(user){
         db.collection('cart '+user.uid).doc(cartProducts.ID).update(Product).then(()=>{
-          console.log("Decrement done ...");
         })
       }
       else{
@@ -127,11 +116,11 @@ const ProdDesc = () => {
    }
  }
 
- const handleCheckOut = (TotalQty,TotalPrice) => {
-  setTimeout(() => {
-    window.location = '/payment';
-}, 1000);
 
+ const handleCheckOut = () => {
+      setTimeout(() => {
+         window.location = '/payment';
+      }, 1000);
  }
 
 
@@ -142,34 +131,34 @@ const ProdDesc = () => {
       {cartProducts.length > 0 && (
         <div className='container-fluid'>
         <h1 className='text-center'>Shopping Cart</h1>
-        <div class="container">
-          <div class="row">
+        <div className="container">
+          <div className="row">
             <CartProduct cartProducts={cartProducts} cartProductIncrease={cartProductIncrease} cartProductDecrease={cartProductDecrease} />
           </div>
         </div>
-        <div class="container-fluid col-md-4">
-                <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h5 class="mb-0">Summary</h5>
+        <div className="container-fluid col-md-4">
+                <div className="card mb-4">
+                    <div className="card-header py-3">
+                        <h5 className="mb-0">Summary</h5>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
+                    <div className="card-body">
+                        <ul className="list-group list-group-flush">
                         <li
-                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                            className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                             Total Quantity
                             <span><strong>{TotalQty}</strong></span>
                         </li>
                         <li
-                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                            className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                             <div>
                             Total amount
-                            <p class="mb-0">(including VAT)</p>
+                            <p className="mb-0">(including VAT)</p>
                             </div>
                             <span><strong>{TotalPrice}</strong></span>
                         </li>
                         </ul>
 
-                        <button type="submit" class="container-fluid btn btn-primary btn-lg btn-block" onClick={handleCheckOut}>
+                        <button type="submit" className="container-fluid btn btn-primary btn-lg btn-block" onClick={handleCheckOut}>
                         Manage Address
                         </button>
                     </div>

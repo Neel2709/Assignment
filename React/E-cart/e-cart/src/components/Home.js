@@ -2,7 +2,6 @@ import React, {useState,useEffect} from 'react'
 import Navbar from './Navbar'
 import Products from './Products'
 import { auth , db } from '../config/Config'
-import {updateProfile} from 'firebase/auth'
 import "../index.css" 
 const Home = (props) => {
 
@@ -27,9 +26,6 @@ const Home = (props) => {
   function GetCurrentUser(){
 
     const [user,setUser] = useState(null);
-
-    // var users = auth.currentUser;
-    // updateProfile(users,{displayName:"Neel"});
 
     useEffect(()=>{
       auth.onAuthStateChanged(user => {
@@ -100,8 +96,8 @@ const Home = (props) => {
         {products.length > 0 && (
           <div className='container-fluid'>
             <h1 className='text-center'>Products</h1>
-            <div class="container">
-              <div class="row">
+            <div className="container">
+              <div className="row">
                 <Products products={products} addToCart={addToCart} />
               </div>
             </div>

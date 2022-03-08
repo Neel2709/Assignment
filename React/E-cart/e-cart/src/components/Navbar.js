@@ -19,42 +19,27 @@ const Navbar = ({user,cartProducts}) => {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#">About</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#">Contact us</a>
-                    </li>
-                    
-                </ul>
                 </div>
-                {/* <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> */}
                 <div className='buttons'>
 
                     {!user && <>
+                        <a href='/' className='btn btn-outline-dark me-2'>
+                        <i className="fa fa-home"></i> Home</a>
                         <a href='/login' className='btn btn-outline-dark'>
-                        <i class="fa-solid fa-right-to-bracket me-1"></i> Login</a>
+                        <i className="fa-solid fa-right-to-bracket me-1"></i> Login</a>
                         <a href='/signup' className='btn btn-outline-dark ms-2'>
-                        <i class="fa-solid fa-user-plus"></i> Register</a>   
+                        <i className="fa-solid fa-user-plus"></i> Register</a>   
                     </>}
                     {user && <>
+                        <a href='/' className='btn btn-outline-dark me-2'>
+                        <i className="fa fa-home"></i> Home</a>
                         <a href='/' className='btn btn-outline-dark'>
-                        <i class="fa-solid fa-user"></i>{user}</a>
-                        <a href='cart' className='btn ms-2'>
-                        <i class="fa-solid fa-cart-arrow-down"></i>{cartProducts && <strong><sup>({cartProducts.length})</sup></strong>}</a>
+                        <i className="fa-solid fa-user"></i>{user}</a>
+                        <a href='cart' className='btn btn-outline-dark ms-2'>
+                        <i className="fa-solid fa-cart-arrow-down"></i>{cartProducts && <strong><sup>({cartProducts.length})</sup></strong>}</a>
                         <a href='' className='btn btn-outline-dark ms-2' onClick={handleLogOut}>
-                        <i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        <i className="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </>}
-
-                    {/* <a href='' className='btn btn-outline-dark ms-2'>
-                    <i class="fa-solid fa-cart-plus"></i> Cart(0)</a> */}
                 </div>
             </div>
         </nav>

@@ -1,13 +1,22 @@
 import React from 'react'
+import { auth , db } from '../config/Config'
+import {getDocs} from  'firebase/firestore';
 
-const CheckOut = () => {
+const CheckOut = (cartProduct) => {
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        window.location='/';
-         alert("Order Placed Successfully ..");
-        
+        e.preventDefault(); 
+        auth.onAuthStateChanged(async user => {
+            const data = await getDocs(db.collection('cart '+user.uid));
+            data.docs.forEach(singleUser => {
+                db.collection('cart '+user.uid).doc(singleUser.id).delete().then(()=>{
+                    window.location = '/';
+                })
+            })
+            alert("Order Placed Successfully .."); 
+          })
     }
+
 
   return (
     <div>

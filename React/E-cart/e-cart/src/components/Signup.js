@@ -26,7 +26,7 @@ const Signup = () => {
                 setTimeout(() => {
                     setSuccessMsg('');
                     window.location = '/login';
-                }, 3000);
+                }, 1000);
             }).catch((error)=>{
                 setErrorMsg(error.message);
             })
@@ -53,6 +53,7 @@ const Signup = () => {
                 <input type="text" className="form-control" id="Full Name" 
                  onChange={(e)=> setFullName(e.target.value)} value={fullName} />
             </div>
+
             <div className="col-md-12">
                 <label for="Email" className="form-label">Email</label>
                 <input type="email" className="form-control" id="Email" placeholder='abc@email.com'
@@ -75,7 +76,6 @@ const Signup = () => {
             <div className="col-12 text-center mb-3" >
                 <span>{errorMsg}</span>
             </div>
-            <br></br>
         </>}
     </div>
   )

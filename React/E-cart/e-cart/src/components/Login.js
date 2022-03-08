@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { auth, db } from '../config/Config';
+import { auth} from '../config/Config';
 
 
 const Login = () => {
@@ -59,7 +59,6 @@ const Login = () => {
             <div className="col-12 text-center mb-3" >
                 <span>{errorMsg}</span>
             </div>
-            <br></br>
         </>}
     </div>
   )
