@@ -1,0 +1,22 @@
+<div style="display: flex;justify-content: center;">
+  <mat-card fxFlex="25%" fxFlex.sm="90%" fxFlex.xs="90%">
+    <img mat-card-image src="{{products?.ProductImage}}">
+  </mat-card>
+</div>
+<div  style="display: flex;justify-content: center;">
+  <mat-card fxFlex="70%" fxFlex.sm="90%" fxFlex.xs="90%" style="height: fit-content;">
+    <mat-card-header>
+      <mat-card-title style="text-align: center;">Product Name : {{products?.ProductName}}</mat-card-title>
+      <mat-card-subtitle style="text-align: center;"><strong>Price</strong> : Rs.{{products?.ProductPrice}}/only</mat-card-subtitle>
+      <mat-card-subtitle>
+        <strong>Description</strong> : <p>{{products?.ProductDescription}}</p>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <div  style="display: flex;justify-content: center;">
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Add To Cart</button>
+    </mat-card-actions>
+  </div>
+  </mat-card>
+</div>
+

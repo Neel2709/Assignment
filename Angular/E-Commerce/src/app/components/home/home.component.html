@@ -1,0 +1,15 @@
+
+
+<div  fxLayout="row wrap" fxLayout.xs="column"  fxLayoutGap="16px">
+  <mat-card *ngFor="let product of products;" class="container mat-elevation-z5 " fxFlex="31.7%" fxFlex.sm="31%" >
+      <img  mat-card-lg-image style="display: flex; justify-content: center;"  class="card-image" src={{product.ProductImage}} alt="Photo of a Shiba Inu" />
+      <mat-card-title>{{product.ProductName}}</mat-card-title>
+      <mat-card-subtitle><strong>Price : Rs. {{product.ProductPrice}}</strong> </mat-card-subtitle>
+      <mat-card-actions class="desc">
+        <button mat-raised-button color="primary" (click)="addToCart(product)">Add To Cart</button>
+        <button mat-raised-button color="primary" (click)="description(product.id)">Description</button>
+      </mat-card-actions>
+  </mat-card>
+
+</div>
+

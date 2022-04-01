@@ -1,0 +1,14 @@
+
+.card-image{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.desc{
+  display:flex;
+  justify-content: center;
+}
+.container{
+  margin-bottom: 16px;
+}
+

@@ -1,0 +1,50 @@
+<div class="form-container mat-elevation-z5">
+  <h1>Sign UP</h1>
+  <form [formGroup]="signupForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input matInput placeholder="Enter name" formControlName="name" />
+      <mat-error *ngIf="name?.errors?.['required']">
+          Email is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enter email" formControlName="email" />
+      <mat-error *ngIf="email?.errors?.['required']">
+          Email is required
+      </mat-error>
+      <mat-error *ngIf="email?.errors?.['email']">
+        Enter email in correct format
+    </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter password" formControlName="password" />
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="password?.errors?.['required']">
+        Password is required
+    </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter password" formControlName="confirmPassword" />
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="confirmPassword?.errors?.['required']">
+        Password is required
+    </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="signupForm.errors?.['passwordsDontMatch']">
+      password and Confirm Password does not match
+    </mat-error>
+
+    <div class="center margin-top" >
+      <button mat-raised-button color="primary" type="submit" >
+        Register
+      </button>
+    </div>
+    <span class="center margin-top">Already have an account?  <a routerLink="/login">  login</a> </span>
+  </form>
+  </div>
+
+
