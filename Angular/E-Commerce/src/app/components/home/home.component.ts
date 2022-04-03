@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   ProductImage : string="";
   ProductDescription : string="";
 
+
   constructor(private authService:AuthenticationService,private productService:ProductService,private router:Router, private cartService:CartService) { }
 
   ngOnInit(): void {
@@ -40,8 +41,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/product_display/'+prod]);
   }
 
-  addToCart(product:any){
-    this.cartService.addToCart(product);
+  addToCart(product:any,qty:number=1){
+    this.cartService.addToCart(product,qty);
     window.alert("Product has been added to the cart successfully...");
   }
 

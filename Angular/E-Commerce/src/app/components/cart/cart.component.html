@@ -1,5 +1,61 @@
-<p>cart works!</p>
-<div *ngFor="let product of products">
-  <span>{{ product.ProductName }}</span>
-  <span>{{ product.ProductPrice  }}</span>
-</div>
+<ng-container *ngIf="products.length !=0">
+  <div class="container">
+      <div class="card-table">
+          <div class="cart-product">
+              <table class="table table-responsive">
+                  <thead>
+                      <tr>
+                          <th>Sr.No</th>
+                          <th>Name</th>
+                          <th>Product Image</th>
+                          <th>Description</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Total</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let product of products; let i = index">
+                          <td>{{i+1}}</td>
+                          <td>{{product.ProductName}}</td>
+                          <td><img style="width: 120px;" src="{{product.ProductImage}}" alt=""></td>
+                          <td style="width: 25%;">{{product.ProductDescription}}</td>
+                          <th style="width: 12%;">{{product.ProductPrice}}</th>
+                          <td style="width: 12%;">{{product.ProductQuantity}}</td>
+                          <td style="width: 12%;">{{product.ProductPrice * product.ProductQuantity}}</td>
+                          <td>
+                              <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+        <div style="display: flex; justify-content: space-between;">
+          <button class="btn btn-danger" style="margin-left: 10px;" (click)="clearCart()">Empty Cart</button>
+          <button class="btn btn-primary" style="margin-left: 10px;" routerLink="/home">Shop More</button>
+          <button class="btn btn-primary" style="margin-left: 10px;">Checkout</button>
+        </div>
+        <div>
+          <button class="btn" style="margin-left: 10px;" disabled><strong style="color: black;">Grand Total : Rs.</strong></button>
+        </div>
+      </div>
+
+
+  </div>
+
+</ng-container>
+
+
+<ng-container *ngIf="products.length ==0">
+  <div class="container">
+    <h2 class="card-title">My Cart</h2>
+      <div class="card">
+          <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+          <h4>Your cart is empty!</h4>
+          <a routerLink="/home" style="text-decoration: none;"><h4 >Back to home!</h4></a>
+      </div>
+  </div>
+</ng-container>

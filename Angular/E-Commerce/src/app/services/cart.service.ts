@@ -9,8 +9,13 @@ export class CartService {
 
   constructor() { }
 
-  addToCart(product: any) {
-    this.products.push(product);
+  addToCart(product: any,qty:number=1) {
+    if(product == this.products){
+      alert("Products Already added in the cart");
+    }
+    else{
+      this.products.push({...product,ProductQuantity:qty});
+    }
   }
 
   getItems() {
@@ -22,3 +27,4 @@ export class CartService {
     return this.products;
   }
 }
+

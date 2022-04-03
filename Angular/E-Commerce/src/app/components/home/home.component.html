@@ -1,6 +1,6 @@
 
 
-<div  fxLayout="row wrap" fxLayout.xs="column"  fxLayoutGap="16px">
+<!-- <div  fxLayout="row wrap" fxLayout.xs="column"  fxLayoutGap="16px">
   <mat-card *ngFor="let product of products;" class="container mat-elevation-z5 " fxFlex="31.7%" fxFlex.sm="31%" >
       <img  mat-card-lg-image style="display: flex; justify-content: center;"  class="card-image" src={{product.ProductImage}} alt="Photo of a Shiba Inu" />
       <mat-card-title>{{product.ProductName}}</mat-card-title>
@@ -11,5 +11,24 @@
       </mat-card-actions>
   </mat-card>
 
+</div> -->
+
+<div class="container">
+  <div class="row">
+      <ng-container *ngFor="let product of products;">
+          <div class="card col-md-3">
+              <img src="{{product.ProductImage}}" alt="">
+              <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{product.ProductName}}</h5>
+              <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{product.ProductDescription}}</p>
+              <p><strong>Price:</strong> Rs. {{product.ProductPrice}}</p>
+              <div style="display: flex;">
+                <button style="margin-right: 10px;" class="btn btn-primary" (click)="addToCart(product)">Add to cart</button>
+                <button class="btn btn-primary" (click)="description(product.id)">Description</button>
+              </div>
+
+          </div>
+      </ng-container>
+
+  </div>
 </div>
 

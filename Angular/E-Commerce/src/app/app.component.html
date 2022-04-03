@@ -1,15 +1,22 @@
 <mat-toolbar color="primary">
   <a routerLink="/home" style="color: aliceblue; text-decoration: none;" >E-Mart</a>
-  <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
-    <button mat-button (click)="logout()">
-      <mat-icon>login</mat-icon>
-      Logout
-    </button>
-    <button mat-button routerLink="cart">
-      <mat-icon>shopping_cart</mat-icon>
-      Cart
-    </button>
-  </ng-container>
+  <div style="display: flex;">
+    <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
+      <button mat-button routerLink="/home">
+        <mat-icon>person_outline</mat-icon>
+        {{user.displayName}}
+      </button>
+      <button mat-button (click)="logout()">
+        <mat-icon aria-hidden="true">login</mat-icon>
+        Logout
+      </button>
+      <button mat-button routerLink="cart">
+        <mat-icon aria-hidden="true">shopping_cart</mat-icon>
+        Cart
+      </button>
+    </ng-container>
+  </div>
+
 
   <ng-template #loginButton>
     <button mat-button routerLink="login">
