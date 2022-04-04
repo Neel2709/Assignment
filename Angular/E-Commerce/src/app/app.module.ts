@@ -28,6 +28,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ProductDisplayComponent } from './product-display/product-display.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CartComponent } from './components/cart/cart.component';
     SignUpComponent,
     HomeComponent,
     ProductDisplayComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

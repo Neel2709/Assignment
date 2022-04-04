@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../services/cart.service';
-import { ProductService } from '../services/product.service';
+import { CartService } from '../../services/cart.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-display',
@@ -21,7 +21,7 @@ export class ProductDisplayComponent implements OnInit {
     this.prod_id = this.route.snapshot.paramMap.get('id');
     this.productService.getProductDoc(this.prod_id!).subscribe((prod:any) => {
       let prods = prod.data();
-      this.products={id:this.prod_id,ProductName:prods.ProductName,ProductDescription:prods.ProductDescription,ProductPrice:prods.ProductPrice,ProductImage:prods.ProductImage};
+      this.products={ID:this.prod_id,ProductName:prods.ProductName,ProductDescription:prods.ProductDescription,ProductPrice:prods.ProductPrice,ProductImage:prods.ProductImage};
     })
    }
 
@@ -40,8 +40,6 @@ export class ProductDisplayComponent implements OnInit {
   }
 
   addToCart(product:any,qty:number=1){
-    console.log(product);
     this.cartService.addToCart(product,qty);
-    window.alert("Product has been added to the cart successfully...");
   }
 }
